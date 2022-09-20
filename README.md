@@ -59,3 +59,11 @@ Things you may want to cover:
     - article = Article.new(title: 'Ruby on Rails', body: 'Primeiro post do blog.').save
     - Article.find(1)
     - Article.all
+
+- criar uma instancia vazia de 'Article':
+    - rails c
+    - article = Article.new
+    - article.title = "Título"
+    - article.body = "texto aqui..."
+    - article.save
+
