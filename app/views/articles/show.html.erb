@@ -5,4 +5,10 @@
 
 <br><br><br><hr>
 <strong> <%= link_to "Editar", edit_article_path %> </strong>
+
+<strong> <%= link_to "Deletar", article_path(@article),
+    method: :delete,
+    data:   {confirm: 'Você quer realmente deletar essa postagem?'}
+%> </strong>
+
 <strong> <%= link_to "Voltar", root_path %> </strong>

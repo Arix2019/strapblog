@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
+  # antes da execução da 'action' / (only) -> onde sera executado / (except) -> onde n será exutado
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def index
     @articles = Article.all
   end
 
   def show 
-    @article = Article.find(params[:id])
   end
 
 # criar um post
@@ -24,13 +26,10 @@ class ArticlesController < ApplicationController
 
 # editar post
   def edit 
-    @article = Article.find(params[:id])
   end
   
   def update 
-    @article = Article.find(params[:id])
-    
-    if @article.update(article_params) 
+      if @article.update(article_params) 
       redirect_to @article
     else
       render :edit
@@ -38,9 +37,23 @@ class ArticlesController < ApplicationController
   end
 
 
+# deletar post
+  def destroy 
+    @article.destroy
+
+    redirect_to root_path
+  end
+
+
+
   private
 
   def article_params 
     params.require(:article).permit(:title, :body)
   end
+
+  def set_article 
+    @article = Article.find(params[:id])    
+  end
+
 end
