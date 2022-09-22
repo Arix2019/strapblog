@@ -1,17 +1,27 @@
-<h2>Bootstrap Blog</h2>
-<br>
-<h3>ARTIGOS</h3>
+<%# partial %>
 
-<%= link_to "Criar novo Post", new_article_path %>
+<%= render 'longer_featured' %>
 
-<ul>
-    <% @articles.each do |article| %>
-        <li>
-<!--    <a href="/article/<%= article.id %>"> 
-            <h3> <%= article.title %> </h3>
-        </a> -->
-            <p> <%= link_to article.title, article %> </p>
-           <hr>
-        </li>
-    <% end %>
-</ul>
+<div class="row mb-2">
+  <%= render 'medium_featured' %>
+  <%= render 'medium_featured' %>
+</div>
+
+<div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        From the Firehose
+      </h3>
+
+    <!-- 
+      <% @articles.each do |article| %>
+        <%= render 'article' %>
+      <% end %>  -->
+      <%= link_to "Criar novo Post", new_article_path %>
+      <%= render @articles %>
+      <%= render 'pagination' %> 
+
+    </div>
+
+    <%= render 'archives' %>
+</div> 
