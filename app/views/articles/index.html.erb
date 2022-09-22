@@ -10,18 +10,15 @@
 <div class="row g-5">
     <div class="col-md-8">
       <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the Firehose
+        Artigos
       </h3>
 
-    <!-- 
-      <% @articles.each do |article| %>
-        <%= render 'article' %>
-      <% end %>  -->
-      <%= link_to "Criar novo Post", new_article_path %>
+      <%= link_to "Criar novo Post", new_article_path, class:"btn btn-primary" %>
+      <br><br>
       <%= render @articles %>
       <%= render 'pagination' %> 
 
     </div>
 
-    <%= render 'archives' %>
+    <%= render 'nav_right' %>
 </div> 
