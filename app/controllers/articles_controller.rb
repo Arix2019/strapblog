@@ -3,34 +3,41 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @highlights = Article.desc_order.first(3)
+
+    current_page = (params[:page] || 1).to_i
+    highlight_id = @highlights.pluck(:id).join(',')
+
+    @articles = Article.without_highlights(highlight_id)
+                       .desc_order
+                       .page(current_page)
   end
 
-  def show 
+  def show
   end
 
 # criar um post
-  def new 
+  def new
     @article = Article.new
   end
 
-  def create 
+  def create
     @article = Article.new(article_params)
 
-    if @article.save 
-      redirect_to @article
+    if @article.save
+      redirect_to @article, notice: "Article was successfully created."
     else
       render :new
     end
   end
 
 # editar post
-  def edit 
+  def edit
   end
-  
-  def update 
-      if @article.update(article_params) 
-      redirect_to @article
+
+  def update
+      if @article.update(article_params)
+      redirect_to @article, notice: "Article was successfully updated."
     else
       render :edit
     end
@@ -38,22 +45,22 @@ class ArticlesController < ApplicationController
 
 
 # deletar post
-  def destroy 
+  def destroy
     @article.destroy
 
-    redirect_to root_path
+    redirect_to root_path, notice: "Article was successfully destroyed."
   end
 
 
 
   private
 
-  def article_params 
+  def article_params
     params.require(:article).permit(:title, :body)
   end
 
-  def set_article 
-    @article = Article.find(params[:id])    
+  def set_article
+    @article = Article.find(params[:id])
   end
 
 end

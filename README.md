@@ -76,17 +76,30 @@ Things you may want to cover:
     1. diretório (app)
     2. diretório (javascript)
     3. diretório (packs)
-    
-    - editar o arquivo (application.js): 
+
+    - editar o arquivo (application.js):
         - import 'bootstrap'
         - import '../stylesheets/application.scss'
     - criar diretorio (stylesheets) dentro da pasta (javascript)
     - criar application.scss dentro do diretorio (stylesheets)
-    
+
     - application.scss
-        - @import '~bootstrap/scss/bootstrap'; 
+        - @import '~bootstrap/scss/bootstrap';
 
     - views
         - layouts
             - application.html.erb
             - <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
+## instalação gem simple_form (estilização/bootstrap)
+* https://github.com/heartcombo/sim
+- bundle add simple_form
+- rails generate simple_form:install --bootstrap
+
+## gem para paginação (kaminari)
+* https://github.com/kaminari/kaminari
+- bundle add kaminari
+
+## Deletar tds os registros do banco de dados
+* Article.delete_all

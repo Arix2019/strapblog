@@ -1,14 +1,17 @@
-<h1>Descrição do artigo: (<%= @article.id %>) </h1>
-<br>
-<h2> <%= @article.title %> </h2>
-<strong> <%= @article.body %> </strong>
+<article class="blog-post">
+  <h2 class="blog-post-title mb-1"> <%= @article.title %> </h2>
+  <p class="blog-post-meta"> <%= post_format_date(@article.created_at) %> <a href="#">Arix</a></p>
 
-<br><br><br><hr>
-<strong> <%= link_to "Editar", edit_article_path %> </strong>
+  <p> <%= @article.body %> </p>
 
-<strong> <%= link_to "Deletar", article_path(@article),
+  <%= link_to "Editar", edit_article_path(@article), class:"btn btn-warning" %>
+  
+  <%= link_to "Deletar", article_path(@article),
     method: :delete,
-    data:   {confirm: 'Você quer realmente deletar essa postagem?'}
-%> </strong>
+    data:   {confirm: 'Você quer realmente deletar essa postagem?'},
+    class:"btn btn-danger"
+  %>
 
-<strong> <%= link_to "Voltar", root_path %> </strong>
+  <%= link_to "Voltar", root_path, class: 'btn btn-secondary' %>
+
+</article>
