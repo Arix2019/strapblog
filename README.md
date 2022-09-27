@@ -103,3 +103,16 @@ Things you may want to cover:
 
 ## Deletar tds os registros do banco de dados
 * Article.delete_all
+
+## Autenticação com Devise
+> https://github.com/heartcombo/devise
+> https://github.com/ryanb/letter_opener
+* bundle add devise
+* bundle add letter_opener
+* rails generate devise:install
+* rails g devise:views
+* rails generate devise User
+* rails g migration AddUserToArticles user:references
+* rails db:migrate
+> OBS: após a criação do usuario o arquivo de 'confirmação de email', poderá ser 
+encontrado no diretório: '/tmp/letter_opener/'

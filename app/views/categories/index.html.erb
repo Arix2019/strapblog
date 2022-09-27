@@ -1,9 +1,16 @@
 <h1>Categories</h1>
 
-<p>
+<%#<p>
   <%= link_to "New Category", new_category_path, class:"btn btn-primary" %>
-</p>
+<%#</p> %>
 
+<thead class="table table-striped">
+  <tr>
+    <th><%= link_to "Home", root_path, class:"btn btn-secondary" %></th>
+    <th><%= link_to "New Category", new_category_path, class:"btn btn-primary" %></th>
+  </tr>
+</thead>
+<br><br>
 <table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
@@ -25,5 +32,6 @@
     <% end %>
   </tbody>
 </table>
+  <%= link_to "Home", root_path, class:"btn btn-light" %>
 
 <br>

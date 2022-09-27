@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   # antes da execução da 'action' / (only) -> onde sera executado / (except) -> onde n será exutado
+  # before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,11 +20,11 @@ class ArticlesController < ApplicationController
 
 # criar um post
   def new
-    @article = Article.new
+    @article = current_user.articles.new
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
 
     if @article.save
       redirect_to @article, notice: "Article was successfully created."
@@ -56,7 +58,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :category_id)
   end
 
   def set_article
