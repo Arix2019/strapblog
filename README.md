@@ -116,3 +116,20 @@ Things you may want to cover:
 * rails db:migrate
 > OBS: após a criação do usuario o arquivo de 'confirmação de email', poderá ser 
 encontrado no diretório: '/tmp/letter_opener/'
+
+## Autorização com Pundit e Rolify
+> https://github.com/varvet/pundit
+* include Pundit (/app/controllers/application_controller.rb)
+* bundle add pundit
+* rails g pundit:install
+* rails g pundit:policy article
+* rails g migration AddAdminToUsers admin:boolean
+* rails db:migrate
+
+## Adicionar um administrador no sistema
+* rails c
+* User.all (lista tds os usuarios)
+* User.find(id_do_user)
+* adm = User(id_do_user)
+* adm.admin = true
+* adm.save 
