@@ -133,3 +133,4 @@ encontrado no diretório: '/tmp/letter_opener/'
 * adm = User(id_do_user)
 * adm.admin = true
 * adm.save 
+* rails g pundit:policy category
